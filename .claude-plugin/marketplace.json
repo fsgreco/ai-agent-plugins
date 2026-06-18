@@ -1,0 +1,15 @@
+{
+  "name": "ai-agent-plugins",
+  "description": "Personal AI agent plugins and skills",
+  "owner": {
+    "name": "Santiago Greco"
+  },
+  "plugins": [
+    {
+      "name": "scrum",
+      "description": "Log daily standup entries to ~/Desktop/scrum/.",
+      "source": "./scrum",
+      "category": "productivity"
+    }
+  ]
+}
