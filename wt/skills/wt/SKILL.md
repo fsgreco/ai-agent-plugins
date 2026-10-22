@@ -15,24 +15,24 @@ All worktree work goes through two bash scripts. Never hand-roll
 
 ## Running the commands
 
-Run the scripts directly with bash. If commands section bellow is not clear check also the usage inside the scripts.
+Run the scripts directly with bash. If the commands section below is not clear, check also the usage inside the scripts.
 They sit beside this SKILL.md, in the skill's base directory
 (Claude Code exposes it as `${CLAUDE_SKILL_DIR}`).
 
 ## Commands
 
-- `bash <base>/create-worktree.sh <PR number|URL> [branch]` — worktree
+- `bash <base>/create-worktree.sh <PR number|URL> [branch]`: worktree
   for an existing GitHub PR. Branch defaults to the issue key at the start of
   the PR title (OCPBUGS-1234), else `pr-<number>`. An optional second argument
   overrides the branch name; it also names the worktree directory suffix.
-- `bash <base>/create-worktree.sh <branch>` — worktree for a branch.
+- `bash <base>/create-worktree.sh <branch>`: worktree for a branch.
   Creates it from the HEAD of the worktree you launch from (the current
   branch), or from the default branch when launched from a container or bare
   root. Attaches an existing branch instead of creating it. Works from any
   checkout, worktree, or bare clone.
-- `bash <base>/create-worktree.sh -C <dir> ...` — create the worktree
+- `bash <base>/create-worktree.sh -C <dir> ...`: create the worktree
   under a specific directory instead of the default location.
-- `bash <base>/clone-bare.sh <user:repo | repo URL> [dir] [branch]` —
+- `bash <base>/clone-bare.sh <user:repo | repo URL> [dir] [branch]`:
   one-time setup for a repo: bare clone at `<dir>/.bare`, a `.git` pointer
   file, fork wiring (upstream remote added, gh default repo set), then opens
   the default branch in a worktree. Pass the fork URL when one exists. The

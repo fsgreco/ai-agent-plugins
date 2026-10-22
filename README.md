@@ -16,9 +16,12 @@ Currently supported: **Claude Code** and **OpenCode**.
 
 Create and locate git worktrees for GitHub PRs and branches.
 
-- `wt 14243` — worktree for a PR, branch named after the issue key in its title
-- `wt OCPBUGS-9999` — worktree for a branch, created from where you launch it
-- `clone-bare user:repo` — one-time setup: bare clone in a container dir, fork wiring, default branch worktree
+- `create-worktree.sh 14243`: worktree for a PR, branch named after the issue key in its title
+- `create-worktree.sh OCPBUGS-9999`: worktree for a branch, created from where you launch it
+- `clone-bare.sh user:repo`: one-time setup, bare clone in a container dir, fork wiring, default branch worktree
+
+The scripts are the interface. Agents invoke them through the `wt` skill;
+Users can manually use them too.
 
 Idempotent: re-running a command returns the existing worktree instead of
 creating a duplicate. Works from normal checkouts and bare-clone containers
@@ -32,9 +35,9 @@ This is a lightweight skill that creates a log into `~/Desktop/scrum/YYYY-MM-DD.
 
 Three modes:  
 
-- **Infer** — bare `/scrum` reads conversation context, suggests a one-line entry, and asks you to confirm before logging
-- **Direct log** — `/scrum fixed login bug on PR #42` appends the entry immediately
-- **List** — `/scrum list` shows today's entries
+- **Infer**: bare `/scrum` reads conversation context, suggests a one-line entry, and asks you to confirm before logging
+- **Direct log**: `/scrum fixed login bug on PR #42` appends the entry immediately
+- **List**: `/scrum list` shows today's entries
 
 What it automates:
 
