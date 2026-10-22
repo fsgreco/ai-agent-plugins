@@ -1,0 +1,13 @@
+{
+  "skills": [
+    {
+      "name": "wt",
+      "version": "1",
+      "files": [
+        "skills/wt/SKILL.md",
+        "skills/wt/scripts/create-worktree.sh",
+        "skills/wt/scripts/clone-bare.sh"
+      ]
+    }
+  ]
+}

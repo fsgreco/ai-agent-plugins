@@ -1,0 +1,5 @@
+{
+  "name": "wt",
+  "version": "0.1.0",
+  "description": "Create and locate git worktrees for PRs and branches using the wt and clone-bare shell commands."
+}

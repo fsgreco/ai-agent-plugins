@@ -6,6 +6,12 @@
   },
   "plugins": [
     {
+      "name": "wt",
+      "description": "Create and locate git worktrees for PRs and branches using the wt and clone-bare shell commands.",
+      "source": "./wt",
+      "category": "development"
+    },
+    {
       "name": "scrum",
       "description": "Log daily standup entries to ~/Desktop/scrum/.",
       "source": "./scrum",

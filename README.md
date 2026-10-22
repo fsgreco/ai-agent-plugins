@@ -8,9 +8,22 @@ The plugins in this repo are currently built as **Claude Code skills** (markdown
 However, the core logic is written in plain natural language and shell scripts. The agent-specific metadata is a thin adapter layer.
 
 The long-term goal is cross-agent portability: same plugins, different harnesses.  
-As standards emerge for agent plugin distribution, these will be adapted to support them. For now, Claude Code is the primary target.
+Currently supported: **Claude Code** and **OpenCode**.
 
 ## Available plugins
+
+### wt
+
+Create and locate git worktrees for GitHub PRs and branches.
+
+- `wt 14243` — worktree for a PR, branch named after the issue key in its title
+- `wt OCPBUGS-9999` — worktree for a branch, created from where you launch it
+- `clone-bare user:repo` — one-time setup: bare clone in a container dir, fork wiring, default branch worktree
+
+Idempotent: re-running a command returns the existing worktree instead of
+creating a duplicate. Works from normal checkouts and bare-clone containers
+(`console/.bare` + worktrees as siblings). Requires `git`; PR mode and fork
+wiring require an authenticated [gh](https://cli.github.com/) CLI.
 
 ### scrum
 
@@ -35,19 +48,38 @@ What it automates:
 
 ## Installation
 
-### 1. Add the marketplace
+### OpenCode
+
+Add the catalog URL to the `skills` array in your `opencode.json`:
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": [
+    "https://raw.githubusercontent.com/fsgreco/ai-agent-plugins/main/"
+  ]
+}
+```
+
+Skills are downloaded and cached; they refresh automatically when the
+catalog's `version` in `index.json` is bumped. To run unreleased changes,
+clone this repo and point `skills` at the clone path instead.
+
+### Claude Code
+
+#### 1. Add the marketplace
 
 ```
 /plugin marketplace add fsgreco/ai-agent-plugins
 ```
 
-### 2. Install a plugin
+#### 2. Install a plugin
 
 ```
 /plugin install scrum@ai-agent-plugins
 ```
 
-### 3. Reload and use
+#### 3. Reload and use
 
 ```
 /reload-plugins
