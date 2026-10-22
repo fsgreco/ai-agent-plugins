@@ -56,14 +56,16 @@ Add the catalog URL to the `skills` array in your `opencode.json`:
 {
   "$schema": "https://opencode.ai/config.json",
   "skills": [
-    "https://raw.githubusercontent.com/fsgreco/ai-agent-plugins/main/"
+    "https://raw.githubusercontent.com/fsgreco/ai-agent-plugins/main/wt/skills/"
   ]
 }
 ```
 
-Skills are downloaded and cached; they refresh automatically when the
-catalog's `version` in `index.json` is bumped. To run unreleased changes,
-clone this repo and point `skills` at the clone path instead.
+Each plugin serves its own catalog from its `skills/` directory, so add one
+URL per plugin you want. Skills are downloaded and cached; they refresh
+automatically when the catalog's `version` in the plugin's `index.json` is
+bumped. To run unreleased changes, clone this repo and point `skills` at the
+clone path instead.
 
 ### Claude Code
 
