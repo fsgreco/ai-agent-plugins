@@ -2,7 +2,7 @@
   "skills": [
     {
       "name": "wt",
-      "version": "2",
+      "version": "3",
       "files": [
         "SKILL.md",
         "create-worktree.sh",

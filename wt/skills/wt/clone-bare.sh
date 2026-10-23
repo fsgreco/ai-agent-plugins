@@ -16,7 +16,7 @@ set -euo pipefail
 
 usage='Usage: clone-bare.sh <repo URL | user:repo> [dir] [branch]'
 url=${1:?$usage}
-if [[ $url =~ '^[^/:]+:[^/:]+$' ]]; then
+if [[ $url =~ ^[^/:]+:[^/:]+$ ]]; then
   url="git@github.com:${url%%:*}/${url##*:}.git"
 fi
 dir=${2:-$(basename "$url" .git)}
@@ -36,6 +36,10 @@ if (( gh_ok )) && [[ $url == *github.com* ]]; then
   repo=$(basename "$url" .git)
   owner=$(basename "$(dirname "$url")")
   parent=$(gh api "repos/$owner/$repo" --jq '.parent.full_name // empty' 2>/dev/null || true)
+  if [[ -n $parent && ! $parent =~ ^[^/]+/[^/]+$ ]]; then
+    echo "clone-bare.sh: unexpected gh api response, skipping fork setup" >&2
+    parent=
+  fi
   if [[ -n $parent ]]; then
     if [[ $url == git@* ]]; then
       upstream_url="git@github.com:${parent}.git"
