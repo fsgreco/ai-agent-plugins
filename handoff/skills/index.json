@@ -1,0 +1,11 @@
+{
+  "skills": [
+    {
+      "name": "handoff",
+      "version": "1",
+      "files": [
+        "SKILL.md"
+      ]
+    }
+  ]
+}

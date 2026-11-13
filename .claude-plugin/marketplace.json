@@ -16,6 +16,12 @@
       "description": "Log daily standup entries to ~/Desktop/scrum/.",
       "source": "./scrum",
       "category": "productivity"
+    },
+    {
+      "name": "handoff",
+      "description": "Persist durable session knowledge as markdown files in ~/Desktop/handoffs/ for future agent sessions.",
+      "source": "./handoff",
+      "category": "productivity"
     }
   ]
 }

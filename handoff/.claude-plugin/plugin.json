@@ -1,0 +1,5 @@
+{
+  "name": "handoff",
+  "version": "0.1.0",
+  "description": "Persist durable session knowledge as markdown files in ~/Desktop/handoffs/ for future agent sessions."
+}
