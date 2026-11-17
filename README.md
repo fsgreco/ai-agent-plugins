@@ -4,8 +4,11 @@ Productivity plugins for developers who use AI coding agents in their daily work
 
 ## Cross-agent portability
 
-The plugins in this repo are currently built as **Claude Code skills** (markdown-based instructions with shell hooks).  
-However, the core logic is written in plain natural language and shell scripts. The agent-specific metadata is a thin adapter layer.
+The plugins in this repo are built as **harness-agnostic markdown skills**: the
+canonical `skills/<name>/SKILL.md` is loaded directly by every supported harness.
+Claude Code consumes it through the plugin marketplace, OpenCode through its
+`skills` config; harness-specific frontmatter (`allowed-tools`) is ignored where
+not applicable.
 
 The long-term goal is cross-agent portability: same plugins, different harnesses.  
 Currently supported: **Claude Code** and **OpenCode**.
@@ -44,7 +47,7 @@ What it automates:
 | Without skill | With skill |
 |---------------|------------|
 | "Where should I save this?" | `~/Desktop/scrum/YYYY-MM-DD.md` - automatic |
-| Create directory, pick file name | Directory and today's file created at skill load |
+| Create directory, pick file name | Directory and today's file created automatically on first use |
 | Decide on entry format | Always `- <text>`, consistent |
 | 4-5 tool calls to log an entry | 2 tool calls (Read + Edit) |
 | No context inference | Suggests entries from what you've been working on |

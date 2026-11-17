@@ -5,11 +5,9 @@ description: Persist durable session knowledge as markdown files in ~/Desktop/ha
 
 # Handoff
 
-Arguments: $ARGUMENTS
-
 Handoffs are long-term memory for future agents in any session, not a status log. Run `mkdir -p ~/Desktop/handoffs` first.
 
-## 1. If `$ARGUMENTS` names an existing handoff file or topic → update
+## 1. If the user names an existing handoff file or topic → update
 
 List `~/Desktop/handoffs/`, find the matching file (if qmd mcp or cli is available use it), read it, and propose edits to that file. Never create a duplicate. Refresh the "as of" date.
 
