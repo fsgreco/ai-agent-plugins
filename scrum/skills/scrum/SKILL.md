@@ -8,26 +8,30 @@ allowed-tools:
 
 # Scrum Daily Log
 
-Arguments: $ARGUMENTS
+Today's log file is `~/Desktop/scrum/<today's date in YYYY-MM-DD>.md`.
 
-!`bash ${CLAUDE_SKILL_DIR}/scripts/setup.sh`
+## 1. If the user says "list" → read only
 
-Today's log file is `~/Desktop/scrum/`!`date +%Y-%m-%d``.md`
+Read today's log file. If it doesn't exist or is empty, say "No entries for today." Done. This mode never creates or modifies files.
 
-## 1. If `$ARGUMENTS` is "list" → read only
+## Before logging an entry
 
-Read today's log file. If it doesn't exist or is empty, say "No entries for today." Done.
+Ensure the scrum directory and today's file exist by running:
 
-## 2. If `$ARGUMENTS` is non-empty text → direct log
+```bash
+mkdir -p ~/Desktop/scrum && touch ~/Desktop/scrum/$(date +%Y-%m-%d).md
+```
 
-Use the Edit tool to append `- $ARGUMENTS` to today's log file. Confirm with the entry added. Done.
+## 2. If the user provides text to log → direct log
 
-## 3. If `$ARGUMENTS` is empty → infer from context
+Append `- <text>` to today's log file. Confirm with the entry added. Done.
+
+## 3. If no specific text is provided → infer from context
 
 1. Look at the current conversation context.
 2. Suggest a one-line summary of the work done — under 100 characters, focusing on what was done and which artifact (PR, file, ticket).
-3. Use AskUserQuestion to let the user confirm, edit, or skip the suggested entry.
-4. If confirmed, use the Edit tool to append `- <confirmed text>` to today's log file.
+3. Ask the user to confirm, edit, or skip the suggested entry.
+4. If confirmed, append `- <confirmed text>` to today's log file.
 
 ## Example entries
 
