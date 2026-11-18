@@ -8,17 +8,19 @@ allowed-tools:
 
 # Scrum Daily Log
 
-First, ensure the scrum directory and today's file exist by running:
-
-```bash
-mkdir -p ~/Desktop/scrum && touch ~/Desktop/scrum/$(date +%Y-%m-%d).md
-```
-
 Today's log file is `~/Desktop/scrum/<today's date in YYYY-MM-DD>.md`.
 
 ## 1. If the user says "list" → read only
 
-Read today's log file. If it doesn't exist or is empty, say "No entries for today." Done.
+Read today's log file. If it doesn't exist or is empty, say "No entries for today." Done. This mode never creates or modifies files.
+
+## Before logging an entry
+
+Ensure the scrum directory and today's file exist by running:
+
+```bash
+mkdir -p ~/Desktop/scrum && touch ~/Desktop/scrum/$(date +%Y-%m-%d).md
+```
 
 ## 2. If the user provides text to log → direct log
 

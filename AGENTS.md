@@ -23,4 +23,5 @@ This is a Claude Code plugin marketplace. Each top-level directory (except `.cla
 - `when_to_use` frontmatter improves triggering; phrase it for any harness.
 - Do not use `$ARGUMENTS` or other slash-command variables: route behavior on the user's phrasing instead ("if the user says 'list'").
 - When adding a new plugin, update `.claude-plugin/marketplace.json` with a new entry.
+- Every plugin's `skills/` directory ships an `index.json` catalog (name, version, file list). When a skill changes, bump its version in `index.json` (drives OpenCode cache refresh) and in the plugin's `plugin.json`.
 - Bump `version` in the plugin's `plugin.json` when making changes.
