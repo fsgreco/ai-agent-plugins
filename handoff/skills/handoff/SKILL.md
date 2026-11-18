@@ -31,6 +31,21 @@ Exclude (stale as soon as someone replies or pushes):
 
 Show the proposed file name and full content. Ask the user to confirm, edit, or skip. Write only after confirmation.
 
+## Lifecycle
+
+Handoffs are either task handoffs (goal + steps + validation, for work not
+yet done) or knowledge handoffs (facts, decisions, conventions).
+
+- Task handoffs must state their own completion condition, e.g. "when X is
+  validated, delete this file". On completion, first salvage any durable
+  knowledge (decisions, conventions, traps) into a knowledge handoff,
+  then delete the task file. Never leave completed work orders behind:
+  they describe a world that no longer exists and mislead future agents.
+- Knowledge handoffs are never deleted on completion. Update them in
+  place and refresh the as-of date.
+- If you happen to create a task handoff (meaning its contents are only tasks or goals) point it out at the top, like e.g. '** This is totally a task handoff **', so the next agent will know it has to check or ask the user if he wants to check it, and remove it if the conditions were satisfied.
+- If the handoff you are creating is only knowledge point it out clearly at the top: '** This is a knowledge handoff ** '
+
 ## File conventions
 
 - Kebab-case name, prefixed with the Jira/bug/PR ID or topic when applicable, e.g. `OCPBUGS-80938-pr-17347-review.md`, `secrets-migration-lessons.md`
